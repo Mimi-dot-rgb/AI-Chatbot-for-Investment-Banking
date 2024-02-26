@@ -1,0 +1,18 @@
+import os
+import openai
+
+# Access the API key from the environment variable
+openai_api_key = os.getenv("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")
+
+if openai_api_key is None:
+    raise ValueError("OPENAI_API_KEY environment variable not set.")
+
+# Set the API key for OpenAI
+openai.api_key = openai_api_key
+
+# Example usage: List available models
+try:
+    models = openai.Model.list()
+    print(models)
+except openai.Error as e:
+    print(f"An error occurred: {e}")
